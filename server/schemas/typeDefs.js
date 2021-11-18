@@ -7,7 +7,7 @@ const typeDefs = gql`
     email: String
     password: String
     bookCount: Int
-    savedBooks: [bookSchema]
+    savedBooks: [Book]
   }
 
   type Book {
@@ -43,3 +43,5 @@ const typeDefs = gql`
     removeBook(bookId: String!): User
   }
 `;
+
+module.exports = typeDefs;
