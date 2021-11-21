@@ -47,13 +47,13 @@ const resolvers = {
             runValidators: true,
           }
         )
-      }
 
-      if(!updatedUser) {
-        throw AuthenticationError('You need to be logged in.');
-      }
+        if(!updatedUser) {
+          throw AuthenticationError('You need to be logged in.');
+        }
 
-      return updatedUser;
+        return updatedUser;
+      }
     },
     removeBook: async (parent, { bookId }, context) => {
       if (context.user) {
