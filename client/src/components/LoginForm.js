@@ -28,14 +28,17 @@ const LoginForm = () => {
     }
 
     try {
-      const response = await loginUser(userFormData);
+      console.log('userFormData: ', userFormData);
+      
+      const response = await loginUser({
+        variables: {
+          email: userFormData.email,
+          password: userFormData.password
+        }
+      });
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+      const token = response.data.loginUser.token;
 
-      const { token, user } = await response.json();
-      console.log(user);
       Auth.login(token);
     } catch (err) {
       console.error(err);
